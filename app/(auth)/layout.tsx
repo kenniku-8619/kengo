@@ -4,13 +4,13 @@ export default function AuthLayout({children} : {children: React.ReactNode;}) {
     return (
         <div className="bg-gray-100">
             <header className="bg-yellow-400 flex justify-evenly p-2">
-                <Link href='home' >ホーム</Link>
+                <Link href='http://localhost:3000/home' >ホーム</Link>
                 <div>
                     <input type="text" className="border bg-white mr-2" placeholder="検索"/>
-                    <button><Link href='home' className="bg-gray-200 p-1 border">検索</Link></button>
+                    <button><Link href='http://localhost:3000/home' className="bg-gray-200 p-1 border">検索</Link></button>
                 </div>
-                <Link href='company'>会社一覧</Link>
-                <Link href='user'>ユーザー情報</Link>
+                <Link href='http://localhost:3000/company'>会社一覧</Link>
+                <Link href='http://localhost:3000/user'>ユーザー情報</Link>
             </header>
              {children}
             <footer className="bg-orange-500 flex flex-col items-center p-3">

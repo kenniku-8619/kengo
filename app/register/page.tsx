@@ -2,17 +2,17 @@ import Link from "next/link";
 
 export default function LoginPage(){
     return(
-        <div className="h-[100vh] flex flex-col items-center bg-gray-100">
+        <div className="flex flex-col items-center bg-gray-100">
             <h1 className="text-3xl my-10 font-black">新規登録画面</h1>
-            <div className="bg-yellow-400 text-3xl p-1">
-                <p className="text-2xl">ID</p>
-                <input type="text" className="border bg-white text-2xl" placeholder="(例)rectangle"/>
-                <p className="text-2xl">パスワード</p>
-                <input type="password" className="border bg-white text-2xl" placeholder="(例)password"/>
-                <p className="text-2xl">本名</p>
-                <input type="text" className="border bg-white text-2xl" placeholder="(例)都道府　県"/>
-                <p className="text-2xl">出身地</p>
-                <select name="todohuken" className="border bg-white text-2xl">
+            <div className="flex flex-col items-center bg-yellow-400 text-3xl p-2 pb-5 md:w-[60vw]">
+                <p className="text-2xl md:text-3xl md:mt-10">ID</p>
+                <input type="text" className="border bg-white text-2xl md:text-3xl" placeholder="(例)rectangle"/>
+                <p className="text-2xl md:text-3xl md:mt-10">パスワード</p>
+                <input type="password" className="border bg-white text-2xl md:text-3xl" placeholder="(例)password"/>
+                <p className="text-2xl md:text-3xl md:mt-10">本名</p>
+                <input type="text" className="border bg-white text-2xl md:text-3xl" placeholder="(例)都道府　県"/>
+                <p className="text-2xl md:text-3xl md:mt-10">出身地</p>
+                <select name="todohuken" className="border bg-white text-2xl md:text-3xl">
                     <option>北海道</option>
                     <option>青森県</option><option>岩手県</option><option>宮城県</option><option>秋田県</option><option>山形県</option><option>福島県</option>
                     <option>茨城県</option><option>栃木県</option><option>群馬県</option><option>埼玉県</option><option>千葉県</option><option>東京都</option><option>神奈川県</option>
@@ -21,9 +21,9 @@ export default function LoginPage(){
                     <option>鳥取県</option><option>島根県</option><option>岡山県</option><option>広島県</option><option>山口県</option><option>徳島県</option><option>香川県</option><option>愛媛県</option><option>高知県</option>
                     <option>福岡県</option><option>佐賀県</option><option>長崎県</option><option>熊本県</option><option>大分県</option><option>宮崎県</option><option>鹿児島県</option><option>沖縄県</option>
                 </select>
-                <div className="mt-3">
-                    <Link href='/' className="bg-gray-200 p-1 mx-5 text-3xl font-semibold">戻る</Link>
-                    <Link href='home' className="bg-gray-200 p-1 mx-5 text-3xl font-semibold">新規作成</Link>
+                <div className="mt-3 md:mt-5">
+                    <Link href='/' className="bg-gray-200 p-1 mx-5 text-3xl font-semibold md:text-5xl">戻る</Link>
+                    <Link href='home' className="bg-gray-200 p-1 mx-5 text-3xl font-semibold md:text-5xl">新規作成</Link>
                 </div>
             </div>
         </div>
