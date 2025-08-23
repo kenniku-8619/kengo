@@ -1,7 +1,7 @@
 'use client'
-import Link from "next/link";
 import { Company } from '@/app/types/company';
 import { supabaseClient } from '@/supabase/client'
+import { User as SupabaseUser } from '@supabase/supabase-js';
 import { useParams } from 'next/navigation';
 import { useEffect, useState } from "react";
 
@@ -9,14 +9,15 @@ export default function CompanyDetailPage() {
     // export default function LoginPage(){
     // const params = useParams<{ tag: string; item: string }>()
     // console.log(params);
-    const [user, setUser] = useState<any>(null);
+    const [user, setUser] = useState<SupabaseUser | null>();
     const { id } = useParams();
     const [company, setCompany] = useState<Company>();
 
     useEffect(() => {
         (async () => {
             const { data: userData } = await supabaseClient.auth.getUser();
-            setUser(userData?.user);
+            const user = userData?.user;
+            setUser(user);
         })();
     },[]);
 
@@ -35,7 +36,7 @@ export default function CompanyDetailPage() {
                     console.log("Fetched company:", data);
                 }
         })();
-    },[]);
+    },[id]);
 
     const addBookmark = async () => {
         const { data, error } = await supabaseClient

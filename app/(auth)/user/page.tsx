@@ -1,7 +1,3 @@
-import Link from "next/link";
-import {Logout} from "./action";
-import { User } from '@/app/types/user';
-import { supabaseClient } from '@/supabase/client'
 import { getUserProfile } from "./action";
 import { handleUserInfoSumit } from "./action"
 

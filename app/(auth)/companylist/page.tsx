@@ -4,7 +4,7 @@ import { supabaseClient } from "@/supabase/client";
 import { Company } from "@/app/types/company";
 import Link from "next/link";
 
-import { use, useEffect, useState } from "react";export default function LoginPage(){
+import { useEffect, useState } from "react";export default function LoginPage(){
     const [companies,setCompanies] = useState<Company[]>([]);
     useEffect(() => {
         (async () => {
@@ -24,7 +24,7 @@ import { use, useEffect, useState } from "react";export default function LoginPa
             <div className="bg-lime-300  flex justify-center py-10 flex-wrap w-[300] md:w-[500] gap-5">
                 {companies.map((company, index) => {
                     return (
-                        <div className="bg-orange-500 p-1"><p className="m-1">{company.name}</p><Link href={`/company/${company.id}`}className="bg-gray-200 p-1 mb-2" key={index}>詳細を確認する</Link></div>
+                        <div key={index} className="bg-orange-500 p-1"><p className="m-1">{company.name}</p><Link href={`/company/${company.id}`}className="bg-gray-200 p-1 mb-2" key={index}>詳細を確認する</Link></div>
                     )
                 })}
                 <div className="bg-orange-500 p-1"><p className="m-1">会社E</p><Link href="company/E"className="bg-gray-200 p-1 mb-2">詳細を確認する</Link></div>

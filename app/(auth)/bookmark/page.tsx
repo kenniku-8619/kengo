@@ -1,7 +1,6 @@
 'use client';
 import { Company } from "@/app/types/company";
 import { supabaseClient } from "@/supabase/client";
-import Link from "next/link";
 import { useEffect, useState } from "react";
 import { deleteBookmark } from "./action";
 

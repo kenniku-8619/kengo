@@ -2,7 +2,6 @@
 
 import { createClient } from "@/supabase/server"
 import { revalidatePath } from "next/cache"
-import { NextRequest } from "next/server"
 import { redirect } from "next/navigation"
 
 export type Profile = {
@@ -16,7 +15,7 @@ export const getUserProfile = async (): Promise<Profile | null> =>{
     const supabase = await createClient();
     const { data: authData } = await supabase.auth.getUser();
     const user = authData?.user;
-    const { data, error } = await supabase
+    const { data } = await supabase
         .from('user')
         .select('*')
         .eq('id', user?.id)
@@ -24,7 +23,7 @@ export const getUserProfile = async (): Promise<Profile | null> =>{
     return data;
 }
 
-export async function Logout(req: NextRequest) {
+export async function Logout() {
     const supabase = await createClient()
 
     const {
@@ -51,7 +50,7 @@ export const handleUserInfoSumit = async(formData: FormData) => {
     const user = userData?.user;
     //
 
-    const { data: Profile, error } = await supabase.from('user').upsert({
+    const { data: upsertData } = await supabase.from('user').upsert({
         id: user?.id,
         first_name: data.first_name,
         second_name: data.second_name,
@@ -59,4 +58,10 @@ export const handleUserInfoSumit = async(formData: FormData) => {
     }, {
         onConflict:'id'
     });
+
+    if (upsertData) {
+        return upsertData;
+    } else {
+        throw new Error ('Failed to update user profile');
+    }
 }
