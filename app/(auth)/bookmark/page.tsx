@@ -1,19 +1,38 @@
+'use client';
+import { Company } from "@/app/types/company";
+import { supabaseClient } from "@/supabase/client";
 import Link from "next/link";
+import { useEffect, useState } from "react";
+import { deleteBookmark } from "./action";
 
 export default function LoginPage(){
+    const [companies, setcompanies] = useState<Company[]>([]);
+
+    useEffect (() => {
+        (async() => {
+            const { data: userData } = await supabaseClient.auth.getUser();
+            const user = userData?.user;
+            const {data} = await supabaseClient.from('bookmark').select(`company(*)`).eq('user_id', user?.id);
+            const companyData = data?.map(bookmark => bookmark.company).flat();
+            setcompanies(companyData || []);
+        })();
+    },[]);
+
     return(
-        <div className="h-[100vh] flex flex-col items-center">
+        <div className="flex flex-col items-center">
             <h1 className="m-3 text-3xl">ブックマークした会社一覧</h1>
-            <div className="bg-lime-300  flex justify-center py-10 flex-wrap w-[300] md:w-[500] gap-5">
-                <div className="bg-orange-500 p-1"><p className="m-1">会社A</p><Link href="company/A"className="bg-gray-200 p-1 mb-2">評細を確認する</Link></div>
-                <div className="bg-orange-500 p-1"><p className="m-1">会社B</p><Link href="company/B"className="bg-gray-200 p-1 mb-2">評細を確認する</Link></div>
-                <div className="bg-orange-500 p-1"><p className="m-1">会社C</p><Link href="company/C"className="bg-gray-200 p-1 mb-2">評細を確認する</Link></div>
-                <div className="bg-orange-500 p-1"><p className="m-1">会社D</p><Link href="company/D"className="bg-gray-200 p-1 mb-2">評細を確認する</Link></div>
-                <div className="bg-orange-500 p-1"><p className="m-1">会社E</p><Link href="company/E"className="bg-gray-200 p-1 mb-2">評細を確認する</Link></div>
-                <div className="bg-orange-500 p-1"><p className="m-1">会社F</p><Link href="company/F"className="bg-gray-200 p-1 mb-2">評細を確認する</Link></div>
-                <div className="bg-orange-500 p-1"><p className="m-1">会社G</p><Link href="company/G"className="bg-gray-200 p-1 mb-2">評細を確認する</Link></div>
-                <div className="bg-orange-500 p-1"><p className="m-1">会社H</p><Link href="company/H"className="bg-gray-200 p-1 mb-2">評細を確認する</Link></div>
-                <div className="bg-orange-500 p-1"><p className="m-1">会社I</p><Link href="company/I"className="bg-gray-200 p-1 mb-2">評細を確認する</Link></div>
+            <div className="bg-lime-300  flex justify-center py-5 flex-wrap w-100 gap-5">
+                {/* <div className="bg-orange-500 p-1"><p className="m-1">会社A</p><Link href="company/A"className="bg-gray-200 p-1 mb-2">評細を確認する</Link></div> */}
+                {companies.map((company) =>{
+                    console.log(company)
+                    return(
+                        <div key={company.id} className="border p-1 my-2 bg-orange-500 "> 
+                            <p>会社名:{company.name}</p>
+                            <p>郵便番号:{company.post_code}</p>
+                            <button onClick={() => deleteBookmark(company)} className="bg-gray-200 p-1 mb-2">ブックマークを削除</button>
+                        </div>
+                    )
+                })}
             </div>
         </div>
     )
