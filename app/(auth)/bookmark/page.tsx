@@ -26,8 +26,8 @@ export default function LoginPage(){
                 {companies.map((company) =>{
                     console.log(company)
                     return(
-                        <Link href={company.name}>
-                            <div key={company.id} className="border p-1 my-2 bg-orange-500 ">
+                        <Link href={company.name} key={company.id}>
+                            <div className="border p-1 my-2 bg-orange-500 ">
                                 <p>会社名:{company.name}</p>
                                 <p>郵便番号:{company.post_code}</p>
                                 <button onClick={() => deleteBookmark(company)} className="bg-gray-200 p-1 mb-2">ブックマークを削除</button>
