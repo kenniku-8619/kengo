@@ -43,9 +43,7 @@ export default function CompanyDetailPage() {
         .from('bookmark')
         .upsert({
             user_id: user?.id,
-            company_id:company?.id })
-            .select()
-            .single();
+            company_id:company?.id });
 
         if (error) {
             console.error("Error bookmarking company", error);
