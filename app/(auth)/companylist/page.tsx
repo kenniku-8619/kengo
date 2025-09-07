@@ -27,11 +27,6 @@ import { useEffect, useState } from "react";export default function LoginPage(){
                         <div key={index} className="bg-orange-500 p-1"><p className="m-1">{company.name}</p><Link href={`/company/${company.id}`}className="bg-gray-200 p-1 mb-2" key={index}>詳細を確認する</Link></div>
                     )
                 })}
-                <div className="bg-orange-500 p-1"><p className="m-1">会社E</p><Link href="company/E"className="bg-gray-200 p-1 mb-2">詳細を確認する</Link></div>
-                <div className="bg-orange-500 p-1"><p className="m-1">会社F</p><Link href="company/F"className="bg-gray-200 p-1 mb-2">詳細を確認する</Link></div>
-                <div className="bg-orange-500 p-1"><p className="m-1">会社G</p><Link href="company/G"className="bg-gray-200 p-1 mb-2">詳細を確認する</Link></div>
-                <div className="bg-orange-500 p-1"><p className="m-1">会社H</p><Link href="company/H"className="bg-gray-200 p-1 mb-2">詳細を確認する</Link></div>
-                <div className="bg-orange-500 p-1"><p className="m-1">会社I</p><Link href="company/I"className="bg-gray-200 p-1 mb-2">詳細を確認する</Link></div>
             </div>
         </div>
     )
