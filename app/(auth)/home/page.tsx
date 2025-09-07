@@ -9,9 +9,9 @@ export default function LoginPage(){
             <div className="bg-yellow-400 m-5 p-2">
                 <h1>あなたの興味のありそうな会社</h1>
                 <div className="flex justify-evenly">
-                    <Link href='company/1' className="bg-gray-200 m-2 p-1">A運送</Link>
-                    <Link href='company/2' className="bg-gray-200 m-2 p-1">B食品</Link>
-                    <Link href='company/3' className="bg-gray-200 m-2 p-1">架空建設</Link>
+                    <Link href='company/2' className="bg-gray-200 m-2 p-1">A運送</Link>
+                    <Link href='company/5' className="bg-gray-200 m-2 p-1">B食品</Link>
+                    <Link href='company/1' className="bg-gray-200 m-2 p-1">架空建設</Link>
                 </div>
             </div>
             <Tokuikensaku />
